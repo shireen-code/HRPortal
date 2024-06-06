@@ -22,7 +22,6 @@ const DeleteEmployee = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         enqueueSnackbar("Error", { variant: "error" });
         console.log(error);
       });

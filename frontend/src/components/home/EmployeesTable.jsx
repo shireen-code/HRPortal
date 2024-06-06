@@ -4,9 +4,11 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
 
+// eslint-disable-next-line react/prop-types
 const EmployeesTable = ({ employees }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
+  // eslint-disable-next-line react/prop-types
   const filteredEmployees = employees.filter(employee =>
     employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     employee.id.toString().toLowerCase().includes(searchQuery.toLowerCase())
@@ -73,7 +75,9 @@ const EmployeesTable = ({ employees }) => {
           </tbody>
         </table>
       ) : (
-        <p>No employees found.</p>
+        <div className="flex justify-center items-center h-48">
+          <p className="text-gray-500">No employees found</p>
+        </div>
       )}
     </div>
   );
