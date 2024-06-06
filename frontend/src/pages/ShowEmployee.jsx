@@ -64,22 +64,6 @@ const ShowEmployee = () => {
               {employee.contractType}
             </span>
           </div>
-          <div className="my-4">
-            <span className="uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-              Create Time
-            </span>
-            <span className="ml-4 text-gray-700 leading-tight">
-              {new Date(employee.createdAt).toString()}
-            </span>
-          </div>
-          <div className="my-4">
-            <span className="uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-              Last Update Time
-            </span>
-            <span className="ml-4 text-gray-700 leading-tight">
-              {new Date(employee.updatedAt).toString()}
-            </span>
-          </div>
         </div>
       )}
     </div>
