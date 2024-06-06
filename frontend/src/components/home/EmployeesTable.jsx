@@ -4,11 +4,9 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
 
-// eslint-disable-next-line react/prop-types
 const EmployeesTable = ({ employees }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // eslint-disable-next-line react/prop-types
   const filteredEmployees = employees.filter(employee =>
     employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     employee.id.toString().toLowerCase().includes(searchQuery.toLowerCase())
@@ -22,7 +20,7 @@ const EmployeesTable = ({ employees }) => {
           <input
             type="text"
             className="block w-full p-2 pl-10 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search"
+            placeholder="Search by name or ID"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -33,62 +31,50 @@ const EmployeesTable = ({ employees }) => {
           </div>
         </div>
       </div>
-      <table className='w-full border-separate border-spacing-2'>
-        <thead>
-          <tr>
-            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Name</th>
-            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>ID</th>
-            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Net Salary</th>
-            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Contract</th>
-            <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredEmployees.map((employee, index) => (
-            <tr key={employee._id} className='h-8'>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                {index + 1}
-              </td>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                <div className="flex">
-                  <div className="ml-3">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      {employee.name}
-                    </p>
-                    <p className="text-gray-600 whitespace-no-wrap">{employee.id}</p>
-                  </div>
-                </div>
-              </td>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                <div className="flex">
-                  <div className="ml-3">
-                    <p className="text-gray-900 whitespace-no-wrap">
-                      {employee.netSalary}
-                    </p>
-                    <p className="text-gray-600 whitespace-no-wrap">USD</p>
-                  </div>
-                </div>
-              </td>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                {employee.contractType}
-              </td>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-                <div className='flex justify-center gap-x-4'>
-                  <Link to={`/employee/details/${employee._id}`}>
-                    <BsInfoCircle className='text-2xl text-green-800' />
-                  </Link>
-                  <Link to={`/employee/edit/${employee._id}`}>
-                    <AiOutlineEdit className='text-2xl text-yellow-600' />
-                  </Link>
-                  <Link to={`/employee/delete/${employee._id}`}>
-                    <MdOutlineDelete className='text-2xl text-red-600' />
-                  </Link>
-                </div>
-              </td>
+      {filteredEmployees.length > 0 ? (
+        <table className='w-full border-collapse border border-gray-200'>
+          <thead>
+            <tr>
+              <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Name</th>
+              <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>ID</th>
+              <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Net Salary</th>
+              <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Contract</th>
+              <th className='px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider'>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredEmployees.map(employee => (
+              <tr key={employee._id} className='border-b border-gray-200'>
+                <td className='px-5 py-3 text-sm'>
+                  <div className="flex">
+                    <div className="ml-3">
+                      <p className="text-gray-900">{employee.name}</p>
+                      <p className="text-gray-600">{employee.id}</p>
+                    </div>
+                  </div>
+                </td>
+                <td className='px-5 py-3 text-sm'>{employee.netSalary} USD</td>
+                <td className='px-5 py-3 text-sm'>{employee.contractType}</td>
+                <td className='px-5 py-3 text-sm'>
+                  <div className='flex justify-center gap-x-4'>
+                    <Link to={`/employee/details/${employee._id}`} title="Details">
+                      <BsInfoCircle className='text-2xl text-green-800' />
+                    </Link>
+                    <Link to={`/employee/edit/${employee._id}`} title="Edit">
+                      <AiOutlineEdit className='text-2xl text-yellow-600' />
+                    </Link>
+                    <Link to={`/employee/delete/${employee._id}`} title="Delete">
+                      <MdOutlineDelete className='text-2xl text-red-600' />
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No employees found.</p>
+      )}
     </div>
   );
 };
