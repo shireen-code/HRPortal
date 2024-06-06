@@ -1,1 +1,1 @@
-# Book Store MERN stack project
+# HR Portal MERN stack project
