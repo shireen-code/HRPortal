@@ -82,74 +82,76 @@ const CreateEmployee = () => {
   return (
     <div className="p-4">
       <BackButton />
-      <h1 className="text-3xl my-4">Create Employee</h1>
+      <h1 className="text-3xl my-4 text-center">Create Employee</h1>
       {loading ? <Spinner /> : ""}
       <div className="flex flex-col rounded-xl w-[600px] p-4 mx-auto">
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Employee Name
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
-        </div>
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Employee ID
-          </label>
-          <input
-            type="text"
-            value={id}
-            onChange={(e) => setID(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
-        </div>
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Start Date
-          </label>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
-        </div>
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Contract Type
-          </label>
-          <input
-            type="text"
-            value={contractType}
-            onChange={(e) => setContract(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
-        </div>
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Designation
-          </label>
-          <input
-            type="text"
-            value={designation}
-            onChange={(e) => setDesignation(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
-        </div>
-        <div className="my-4">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-          />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Employee Name
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Employee ID
+            </label>
+            <input
+              type="text"
+              value={id}
+              onChange={(e) => setID(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Start Date
+            </label>
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Contract Type
+            </label>
+            <input
+              type="text"
+              value={contractType}
+              onChange={(e) => setContract(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Designation
+            </label>
+            <input
+              type="text"
+              value={designation}
+              onChange={(e) => setDesignation(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
+          <div className="my-4">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+            />
+          </div>
         </div>
         {dependents.map((dependent, index) => (
           <div key={index} className="my-4">
