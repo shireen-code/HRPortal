@@ -67,7 +67,7 @@ router.get('/', async (request, response) => {
       const netSalary = annualSalary - totalBenefitsCost;
 
       // Calculate the per paycheck net salary
-      const perPaycheckNetSalary = netSalary / 26;
+      const perPaycheckNetSalary = (netSalary / 26).toFixed(2);
 
       // Return employee details along with calculated fields
       return {
